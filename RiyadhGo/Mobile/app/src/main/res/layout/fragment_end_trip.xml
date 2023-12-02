@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.EndTripFragment">
+    <ImageView
+        android:id="@+id/end_trip_fgmt_person_imgvw"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/person"
+        >
+    </ImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toEndOf="@id/end_trip_fgmt_person_imgvw"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+
+        android:text="@string/user_guest" />
+
+    <TextView
+        android:id="@+id/end_trip_fgmt_detail_lbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_person_imgvw"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="@string/end_trip_detail"
+        ></TextView>
+
+    <ImageView
+        android:id="@+id/end_trip_fgmt_pick_imgvw"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_detail_lbl"
+        android:src="@drawable/place"
+        >
+
+    </ImageView>
+    <TextView
+        android:id="@+id/end_trip_fgmt_pick_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toEndOf="@id/end_trip_fgmt_pick_imgvw"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_detail_lbl"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:text="@string/choose_pickup_point" />
+    <ImageView
+        android:id="@+id/end_trip_fgmt_dest_imgvw"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_pick_lbl"
+        android:src="@drawable/place"
+        >
+
+    </ImageView>
+    <TextView
+        android:id="@+id/end_trip_fgmt_dest_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toEndOf="@id/end_trip_fgmt_person_imgvw"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_pick_lbl"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+
+        android:layout_marginTop="10dp"
+        android:text="@string/destination" />
+
+    <TextView
+        android:id="@+id/end_trip_fgmt_info_lbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_dest_lbl"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="@string/you_did_it"
+        ></TextView>
+
+
+    <TextView
+        android:id="@+id/end_trip_fgmt_cal_lbl"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_info_lbl"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:text="@string/calories_burned"
+        ></TextView>
+    <TextView
+        android:id="@+id/end_trip_fgmt_cal_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_info_lbl"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:text="@string/cal_50"
+        ></TextView>
+    <TextView
+        android:id="@+id/end_trip_fgmt_car_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_cal_lbl"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:text="@string/calories_burned"
+        ></TextView>
+    <TextView
+        android:id="@+id/end_trip_fgmt_car_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_cal_lbl"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:text="@string/car_50"
+        ></TextView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_car_txt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/txt_continue"
+        ></Button>
+</androidx.constraintlayout.widget.ConstraintLayout>

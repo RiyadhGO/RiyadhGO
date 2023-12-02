@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="5dp" android:layout_margin="5dp"
+    android:background="@drawable/bottom_border">
+    <ImageView
+        android:id="@+id/ivMethodImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/bus"
+        ></ImageView>
+
+    <TextView
+        android:id="@+id/tvMethodType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Bus"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ivMethodImage"
+        app:layout_constraintTop_toTopOf="parent" />
+    />
+    <TextView
+        android:id="@+id/tvMethodName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvMethodType"
+        app:layout_constraintStart_toEndOf="@+id/ivMethodImage"
+        android:text="Lime geeny"
+        android:textSize="16sp"
+        android:layout_marginStart="8dp"
+        ></TextView>
+    <TextView
+        android:id="@+id/tvMethodPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="15 SAR"
+        android:textSize="16sp"
+        ></TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>

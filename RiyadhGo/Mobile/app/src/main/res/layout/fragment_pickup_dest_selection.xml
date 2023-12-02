@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.PickupDestSelectionFragment"
+    android:padding="5dp">
+    <TextView
+        android:id="@+id/where_to_go_lbl"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="@string/where_are_you_going_today" />
+    <ImageView
+        android:id="@+id/select_pickup_imgvw"
+        android:padding="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/place"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/where_to_go_lbl"
+        ></ImageView>
+    <Button
+        android:id="@+id/choose_pickup_btn"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="@string/choose_pickup_point"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/selver"
+        android:textAlignment="textStart"
+        app:layout_constraintTop_toBottomOf="@id/where_to_go_lbl"
+        app:layout_constraintStart_toEndOf="@id/select_pickup_imgvw"
+
+        android:padding="5dp"
+        >
+
+
+    </Button>
+    <ImageView
+        android:id="@+id/fav_pickup_btn"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/heart"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@color/white"
+        android:textAlignment="textStart"
+        app:layout_constraintTop_toBottomOf="@id/where_to_go_lbl"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        >
+
+
+    </ImageView>
+
+
+
+    <ImageView
+        android:id="@+id/select_dest_imgvw"
+        android:layout_marginTop="5dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:src="@drawable/place"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/select_pickup_imgvw"
+        ></ImageView>
+    <Button
+        android:id="@+id/choose_dest_btn"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_width="0dp"
+        android:padding="5dp"
+        android:layout_height="50dp"
+        android:text="@string/your_dest"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/selver"
+        android:textAlignment="textStart"
+        app:layout_constraintTop_toBottomOf="@id/choose_pickup_btn"
+        app:layout_constraintStart_toEndOf="@id/select_dest_imgvw"
+
+        >
+
+    </Button>
+    <ImageView
+        android:id="@+id/fav_dest_btn"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/choose_pickup_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/heart"
+        >
+
+
+    </ImageView>
+    <Button
+        android:id="@+id/fgmt_pickup_dest_home_btn"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_width="0dp"
+        android:padding="5dp"
+        android:layout_height="50dp"
+        android:text="@string/title_home"
+        android:backgroundTint="@color/purple_200"
+        android:textColor="@color/white"
+        android:textAlignment="textStart"
+        app:layout_constraintTop_toBottomOf="@id/choose_dest_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+    </Button>
+    <Button
+        android:id="@+id/fgmt_pickup_dest_fav_btn"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_width="0dp"
+        android:padding="5dp"
+        android:layout_height="50dp"
+        android:text="@string/favorites"
+        android:backgroundTint="@color/purple_200"
+        android:textColor="@color/white"
+        android:textAlignment="textStart"
+        app:layout_constraintTop_toBottomOf="@id/choose_dest_btn"
+        app:layout_constraintStart_toEndOf="@id/fgmt_pickup_dest_home_btn"
+        >
+    </Button>
+    <Button
+        android:id="@+id/directions_start_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_200"
+        android:textColor="@color/white"
+        android:text="@string/directions"
+        app:layout_constraintStart_toEndOf="@id/fgmt_pickup_dest_fav_btn"
+        app:layout_constraintTop_toBottomOf="@id/choose_dest_btn"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        ></Button>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recent_places_rv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fgmt_pickup_dest_fav_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_saved_place"
+        tools:itemCount="2"
+        ></androidx.recyclerview.widget.RecyclerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
