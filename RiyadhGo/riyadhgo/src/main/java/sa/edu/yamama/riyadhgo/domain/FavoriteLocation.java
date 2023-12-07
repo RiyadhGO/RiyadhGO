@@ -11,13 +11,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
+//The creation of table "favorite_locations" in the database
 @Entity
 @Table(name = "favorite_locations")
 public class FavoriteLocation implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+//The creation of the variables Location ID, user ID, longitude, latitude and nane in the "favourite_locations" table  
     @Id
     @Column(name = "loc_id")
     @GeneratedValue

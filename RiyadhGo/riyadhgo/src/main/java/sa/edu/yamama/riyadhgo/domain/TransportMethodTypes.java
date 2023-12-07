@@ -1,7 +1,7 @@
 package sa.edu.yamama.riyadhgo.domain;
-
+//The transport method types that are available in RiyadhGO
 public enum TransportMethodTypes {
-// start counting at zero
+
     WALK,
     SCOOTER,
     CAR,

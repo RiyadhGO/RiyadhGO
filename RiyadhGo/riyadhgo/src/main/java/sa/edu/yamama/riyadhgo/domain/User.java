@@ -15,11 +15,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+//The creation of table "users" in the database
 @Entity
 @Table(name="users")
 public class User implements UserDetails {
 
-  
+
+//The creation of the variables user's ID, name, email, password, password salt, role, phone in the "users" table  
     @Id
     @GeneratedValue
     @Column(name="u_id")

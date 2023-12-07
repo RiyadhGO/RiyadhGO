@@ -8,10 +8,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+//The creation of table "locations" in the database
 @Entity
 @Table(name="locations")
 public class Location implements Serializable{
-    
+ 
+//The creation of the variables Location ID, name, longitude, latitude and type in the "location" table  
     @Id
     @GeneratedValue
     @Column(name="loc_id")

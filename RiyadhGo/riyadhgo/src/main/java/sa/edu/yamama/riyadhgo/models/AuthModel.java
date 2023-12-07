@@ -1,5 +1,6 @@
 package sa.edu.yamama.riyadhgo.models;
 
+//The class AuthModel represents the credentials necessary to authorize access to the user 
 public class AuthModel {
     
     private String email;

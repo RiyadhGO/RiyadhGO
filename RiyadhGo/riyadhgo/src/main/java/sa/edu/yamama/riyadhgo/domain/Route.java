@@ -13,10 +13,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+//The creation of table "routes" in the database
 @Entity
 @Table(name = "routes")
 public class Route implements Serializable {
-    
+
+
+//The creation of the variables Route's ID, trip ID, time, longitude, and latitude in the "Route" table
+
     @Id
     @GeneratedValue
     @Column(name="route_id")

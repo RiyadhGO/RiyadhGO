@@ -1,5 +1,5 @@
 package sa.edu.yamama.riyadhgo.security;
-
+//This class is for the creation & resolving jwt tokens.
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;

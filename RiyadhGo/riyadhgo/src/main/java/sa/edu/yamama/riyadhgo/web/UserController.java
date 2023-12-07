@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import sa.edu.yamama.riyadhgo.domain.User;
 import sa.edu.yamama.riyadhgo.repo.UserRepository;
 import sa.edu.yamama.riyadhgo.security.RiyadhgoAuthService;
-
+/*
+RiyadhGo uses MVC (Model View Controller) architecture, 
+the main responsibilities of controllers include intercepting incoming requests, converting the payload of the request to the internal structure of the data
+sending the data to Model for further processing, getting processed data from the Model, and advancing that data to the View for rendering
+ */
 
 
 @RequestMapping("/users")
@@ -30,39 +34,39 @@ public class UserController {
     private RiyadhgoAuthService authService;
 
 
-    @GetMapping
+    @GetMapping // http request listing all users
     public ResponseEntity<List<User>> getAll() {
         var found = this.userRepository.findAll();
         return ResponseEntity.ok().body(found);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<User> add(@RequestBody User item) {
+    @PostMapping("/create") // http request to create a user
+    public ResponseEntity<User> add(@RequestBody User item) { //responds by adding a new item to user repository
 
-        var saved = authService.registerUser(item);
+        var saved = authService.registerUser(item); //authenticating user
         if (saved != null && saved.getUserId() > 0) {
-            return ResponseEntity.ok().body(saved);
+            return ResponseEntity.ok().body(saved); //saving user id
         }
         return ResponseEntity.badRequest().body(item);        
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/edit/{id}") //http request to view users
     public ResponseEntity<User> view(@PathVariable("id") Long id) {
         var found = this.userRepository.findById(id);
         if (found.isPresent()) {
-            return ResponseEntity.ok().body(found.get());
+            return ResponseEntity.ok().body(found.get()); //if user is found it will be displayed
         }
         return ResponseEntity.notFound().build();
     }
 
     
-    @PutMapping("/edit/{id}")
+    @PutMapping("/edit/{id}") // http request to update user 
     public ResponseEntity<User> update(@PathVariable("id") Long id, @RequestBody User item) {
         var found = this.userRepository.findById(id);
         if (found.isPresent()) {
             var old = found.get();
-            old.setName(item.getName());
-            var updated = this.userRepository.save(old);
+            old.setName(item.getName()); //overwrite old user name
+            var updated = this.userRepository.save(old); //overwrite old user save
             return ResponseEntity.ok().body(updated);
 
         }
@@ -70,12 +74,12 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
  
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}") // http request to delete user
     public ResponseEntity<String> delete(@PathVariable("id") Long id) {
         var found = this.userRepository.findById(id);
         if (found.isPresent()) {
             this.userRepository.delete(found.get());
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok().build(); // if found user is deleted
         }
         return ResponseEntity.notFound().build();
     }

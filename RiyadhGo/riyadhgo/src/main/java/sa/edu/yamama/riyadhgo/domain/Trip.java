@@ -14,9 +14,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+//The creation of table "Trips" in the database
 @Entity
 @Table(name = "trips")
 public class Trip implements Serializable {
+ 
+/*The creation of the variables trip ID, user ID, start longitude and latitude, end longitude and latitude, trip duration, 
+start time and end time and transport method ID in the "trips" table.
+
+*/
 
     @Id
     @Column(name = "trip_id")

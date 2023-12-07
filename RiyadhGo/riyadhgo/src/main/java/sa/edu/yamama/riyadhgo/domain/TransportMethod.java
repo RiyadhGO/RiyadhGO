@@ -8,10 +8,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+//The creation of table "transport_methods" in the database
 @Entity
 @Table(name="transport_methods")
 public class TransportMethod implements Serializable {
-    
+ 
+//The creation of the variables method's ID, name, unit cost, measure unit, carbon emitted, link url and method type in the "transport_methods" table    
     @Id
     @GeneratedValue
     @Column(name="method_id")
@@ -28,7 +30,7 @@ public class TransportMethod implements Serializable {
 
     @Column(name="carbon_emitted")
     private boolean carbonEmitted;
-
+//link url is created in case a method that require redirection is selected. For example the selection of car will result in a redirection to the Uber Application
     @Column(name="link_url")
     private String link;
 

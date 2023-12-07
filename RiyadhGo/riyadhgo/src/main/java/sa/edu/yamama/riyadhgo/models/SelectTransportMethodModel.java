@@ -1,5 +1,6 @@
 package sa.edu.yamama.riyadhgo.models;
 
+//The class Select Transport Method Model represents what is displayed to the user once a method is selected. That includes method name, minimum and maximum price estimates.
 public class SelectTransportMethodModel {
 
     public String methodType;

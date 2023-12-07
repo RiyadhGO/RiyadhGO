@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 
 import sa.edu.yamama.riyadhgo.domain.User;
 import sa.edu.yamama.riyadhgo.repo.UserRepository;
-
+//Importing an Authentication Provider from the spring security framework 
 @Service
 public class RiyadhgoAuthService implements AuthenticationProvider {
 
@@ -30,20 +30,20 @@ public class RiyadhgoAuthService implements AuthenticationProvider {
 
     @Autowired
     private UserRepository userRepository;
-
+//Authenticating usernames and passwords
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String username = authentication.getName();
-        String password = authentication.getCredentials().toString();// password
+        String username = authentication.getName(); // Username is submitted by user
+        String password = authentication.getCredentials().toString();// password is submitted by user
 
-        var found = userRepository.findOneByEmail(username);
+        var found = userRepository.findOneByEmail(username); // Finding the username in the user repository 
         if (found.isPresent()) {
             User user = found.get();
-            String encodedSalt = user.getPasswordSalt();
-            String hashedPassword = this.getHashedValue(password, encodedSalt);
-            if (user.getPassword().equals(hashedPassword)) {
+            String encodedSalt = user.getPasswordSalt(); // Retrieving the password salt
+            String hashedPassword = this.getHashedValue(password, encodedSalt); // Adding the salt to the password entered by the user to get the hashed value
+            if (user.getPassword().equals(hashedPassword)) { // Comparing the hashed value to the password entered by user 
                 
-                var u = new UsernamePasswordAuthenticationToken(user, password, user.getAuthorities());
+                var u = new UsernamePasswordAuthenticationToken(user, password, user.getAuthorities()); //Creation of username and password authentication token
                 var ctx = SecurityContextHolder.getContext();
                 ctx.setAuthentication(u);
                 SecurityContextHolder.setContext(ctx);
@@ -53,7 +53,7 @@ public class RiyadhgoAuthService implements AuthenticationProvider {
 
         return null;
     }
-
+// Method for hashing the password
    @Override
     public boolean supports(Class<?> authentication) {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
@@ -72,31 +72,31 @@ public class RiyadhgoAuthService implements AuthenticationProvider {
 
         return Base64.getEncoder().encodeToString(hashedValue);
     }
-
+//The register user method
     public User registerUser(User user) {
         
-        String encodedSalt = this.getEncodedSalt();
-        String hashedPassword = this.getHashedValue(user.getPassword(), encodedSalt);
-        user.setPassword(hashedPassword);
-        user.setPasswordSalt(encodedSalt);
+        String encodedSalt = this.getEncodedSalt(); //generate password salt
+        String hashedPassword = this.getHashedValue(user.getPassword(), encodedSalt); //apply password salt to the password entered by user
+        user.setPassword(hashedPassword); //set the hashed password
+        user.setPasswordSalt(encodedSalt); //set the encoded salt 
 
-        var added = userRepository.save(user);
+        var added = userRepository.save(user); //save to user repository
      
         return added;
     }
-
+//The get encoded salt method to generate password salt
     private String getEncodedSalt() {
-        SecureRandom random = new SecureRandom();
+        SecureRandom random = new SecureRandom(); // SecureRandom is security class that provides a cryptographically strong random number generator (RNG)
         byte[] salt = new byte[16];
-        random.nextBytes(salt);
-        String encodedSalt = Base64.getEncoder().encodeToString(salt);
+        random.nextBytes(salt); // the random number generator is assigned to the name 'random' and applied to the salt 
+        String encodedSalt = Base64.getEncoder().encodeToString(salt); // converting the 16 byte number to a string and storing it as 'encodedSalt'
         return encodedSalt;
     }
-
+//The boolean method confirms if the user is previously registered using the email entered.
     public boolean isRegisteredBefore(String email) {
         return userRepository.findOneByEmail(email).isPresent();
     }
-
+//The method retrieves the current user
     public User getCurrentUser() {
         var ctx = SecurityContextHolder.getContext();
         var auth = ctx.getAuthentication();

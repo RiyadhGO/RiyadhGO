@@ -16,14 +16,14 @@ public class RiyadhgoApplication {
 	@Autowired
 	private RiyadhgoAuthService userService;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { //main method for running back-end of RiyadhGo
 		SpringApplication.run(RiyadhgoApplication.class, args);
 	}
 
 	@EventListener
 	public void seed(ContextRefreshedEvent event) {
 
-		if (!userService.isRegisteredBefore("admin@rgo.com")) {
+		if (!userService.isRegisteredBefore("admin@rgo.com")) { //admin credentials
 			User admin = new User();
 			admin.setEmail("admin@rgo.com");
 			admin.setName("RiyadhGo Admin");

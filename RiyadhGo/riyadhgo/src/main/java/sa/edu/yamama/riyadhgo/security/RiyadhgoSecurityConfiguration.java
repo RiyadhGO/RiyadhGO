@@ -11,7 +11,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import jakarta.servlet.http.HttpServletResponse;
 
-
+//The Riyadhgo security configuration class allow for http-specific functionalities in sending a request and response for authorization
 @Configuration
 @EnableWebSecurity
 public class RiyadhgoSecurityConfiguration {

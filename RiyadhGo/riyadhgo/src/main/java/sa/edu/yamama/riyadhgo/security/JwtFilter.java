@@ -1,7 +1,7 @@
 package sa.edu.yamama.riyadhgo.security;
 
 import java.io.IOException;
-
+//This class represents the spring security framework for authorization and authentication using a JWT token.
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
