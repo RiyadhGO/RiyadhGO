@@ -5,7 +5,7 @@ public class ApiConstants {
 
     public static String UN_AUTHORIZED = "Unauthorized";
 
-    public static String BASE_URI = "http://192.168.8.125:8080";
+    public static String BASE_URI = "http://172.20.10.5:8080";
     public static String LOGIN_URI = BASE_URI + "/auth/login";
     public static String REGISTER_URI = BASE_URI + "/auth/register";
     

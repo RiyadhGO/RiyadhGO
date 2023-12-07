@@ -22,6 +22,8 @@ public class DistanceUtils {
         return R * c;
     }
 
+
+
     private static double calculateDistanceInKiloMeters(double lat1, double lon1, double lat2, double lon2) {
         return calculateDistance(lat1, lon1, lat2, lon2) / 1000;
     }
