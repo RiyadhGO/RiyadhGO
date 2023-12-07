@@ -18,21 +18,45 @@ import com.google.android.gms.tasks.OnTokenCanceledListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import sa.edu.yamamh.riyadhgo.data.TripModel;
 
 public class GPSLocationUtils {
+    //This class provides functionality for tracking the user's location updates and notifying interested listeners
 
-
-    private static List<LocationChangedListener> listeners = new ArrayList<>();
-
+    private static ExecutorService executor = Executors.newSingleThreadExecutor();//Single-threaded executor: Utilizes a single thread for location updates to avoid resource contention
+    public static List<LocationChangedListener> listeners = new ArrayList<>();
+    //Allows registering and removing listeners interested in location changes
     public static void registerListener(LocationChangedListener listener){
-        listeners.add(listener);
+        listeners.add(listener);//Registers a listener to receive location updates
     }
     public static void removeListener(LocationChangedListener listener){
-        listeners.remove(listener);
+        listeners.remove(listener);//Removes a previously registered listener
     }
-    public static void updateCurrentLocation(Activity ctx) {
+
+    public static void startLocationUpdates(Activity ctx) {
+        //Starts a background thread that periodically updates the user's location and notifies listeners
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    try {
+                        Thread.sleep(3000);
+
+                            GPSLocationUtils.updateCurrentLocation(ctx);
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
+    private static void updateCurrentLocation(Activity ctx) {
+        //Retrieves the current location using the FusedLocationProviderClient and broadcasts it to registered listeners
         FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(ctx);
         if (ActivityCompat.checkSelfPermission(ctx, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED
@@ -63,6 +87,7 @@ public class GPSLocationUtils {
                             {
                                 listeners.get(i).locationChanged(latLng);
                             }
+
                         }
                     }
                 });

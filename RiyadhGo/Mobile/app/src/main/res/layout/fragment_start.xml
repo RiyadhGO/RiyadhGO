@@ -7,6 +7,8 @@
     tools:context=".ui.StartFragment"
     android:padding="5dp">
 
+   <!-- Add Logout Image -->
+
 <!-- include maps fragment -->
 <fragment
        android:id="@+id/map"
@@ -26,5 +28,15 @@
        app:defaultNavHost="false"
        app:layout_constraintBottom_toBottomOf="parent"
        app:navGraph="@navigation/sub_navigation" />
+
+   <ImageView
+       android:id="@+id/logoutBtn"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       android:src="@drawable/logout"
+       android:layout_width="50dp"
+       android:layout_height="50dp" >
+
+   </ImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

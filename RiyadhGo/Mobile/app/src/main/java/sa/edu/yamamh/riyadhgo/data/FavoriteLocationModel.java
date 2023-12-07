@@ -10,7 +10,7 @@ import java.util.Map;
 import sa.edu.yamamh.riyadhgo.MappingUtils;
 
 public class FavoriteLocationModel {
-
+    //declare public fields: id, name, longitude, latitude, userId, userName
     public long id;
     public String name;
     public float longitude;
@@ -18,6 +18,7 @@ public class FavoriteLocationModel {
     public long userId;
     public String userName;
 
+    //this constructor creates an empty FavoriteLocationModel
     public FavoriteLocationModel() {
     }
 
@@ -30,7 +31,7 @@ public class FavoriteLocationModel {
         this.userName = userName;
     }
 
-    //setters and getters
+    //setters and getters that allows accessing and modifying the data
 
 
     public long getId() {
@@ -81,6 +82,8 @@ public class FavoriteLocationModel {
         this.userName = userName;
     }
 
+    //toMap method converts the FavoriteLocationModel
+    // object to a Map object, to make it easier to store and transmit data
     public Map<String,Object> toMap(){
         Map<String,Object> data = new HashMap<>();
         data.put("id", this.getId());
@@ -91,7 +94,8 @@ public class FavoriteLocationModel {
         data.put("userName", this.getUserName());
         return  data;
     }
-
+    //fromMap method creates a new FavoriteLocationModel object from a Provided Map object,
+    // so it allows reconstruction of the object from the stored data.
     public static FavoriteLocationModel fromMap(Map<String,Object> data){
         FavoriteLocationModel location = new FavoriteLocationModel();
         location.setId(MappingUtils.getLong("id",data));
@@ -102,7 +106,7 @@ public class FavoriteLocationModel {
         location.setUserName(MappingUtils.getString("userName",data));
         return location;
     }
-
+    //fromJSONObject method does the same as fromMap but takes JSONObject as input instead
     public static FavoriteLocationModel fromJSONObject(JSONObject data){
         FavoriteLocationModel location = new FavoriteLocationModel();
         location.setId(MappingUtils.getLong("id",data));
@@ -113,6 +117,8 @@ public class FavoriteLocationModel {
         location.setUserName(MappingUtils.getString("userName",data));
         return location;
     }
+    // toLatLng method converts the FavoriteLocationModel
+    // latitude and longitude values into a LatLng object
     public LatLng toLatLng()
     {
         return new LatLng(this.latitude,this.longitude);

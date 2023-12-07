@@ -95,7 +95,7 @@ public class BusMethodFragment extends Fragment
                 new Runnable() {
                     @Override
                     public void run() {
-                        UIUtils.showAlertDialog(getActivity(),"Error:", error);
+                        UIUtils.showAlertDialog(getActivity(),"Error:", error, null);
                     }
                 }
         );
@@ -133,6 +133,8 @@ public class BusMethodFragment extends Fragment
         selectedLocation = model;
         WalkingTripFragment.originalMethod = TransportMethodTypes.BUS;
         WalkingTripFragment.targetLocation = model;
+        WalkingTripFragment.firstTarget = true;
+        WalkingTripFragment.reached = false;
         navigateToSubAction(R.id.action_busMethodFragment_to_walkingTripFragment);
     }
 

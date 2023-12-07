@@ -67,17 +67,17 @@
 
     <Button
         android:id="@+id/walking_trip_fgmt_sos_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:text="@string/GO"
         android:backgroundTint="@color/black"
         android:layout_height="wrap_content"
-        android:padding="15dp"
+        android:padding="0dp"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/walking_trip_fgmt_person_imgvw"
         android:layout_marginTop="10dp"
-        android:paddingStart="50dp"
-        android:paddingEnd="50dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         ></Button>
 

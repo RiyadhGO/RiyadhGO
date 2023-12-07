@@ -42,7 +42,7 @@ public class SelectTransportMethodsRVAdapter extends RecyclerView.Adapter<Select
         SelectTransportMethodModel model = this.methodsList.get(position);
         holder.getMethodTypeTV().setText(model.getMethodType() != null ?  model.getMethodType().toString() : "MT");
         holder.getMethodNameTV().setText(model.getNames());
-        holder.getMethodPriceTV().setText(String.format("%.2f-%.2f",model.getMaxPrice(),model.getMinPrice()));
+        holder.getMethodPriceTV().setText(String.format("%.2f-%.2f",model.getMinPrice(),model.getMaxPrice()));
 
         holder.getMethodTypeTV().setOnClickListener(view -> listener.methodTypeSelected(model));
         holder.getMethodNameTV().setOnClickListener(view -> listener.methodTypeSelected(model));

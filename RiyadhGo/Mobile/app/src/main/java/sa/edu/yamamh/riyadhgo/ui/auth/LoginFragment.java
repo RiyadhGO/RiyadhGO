@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import sa.edu.yamamh.riyadhgo.DataArrivedListener;
+import sa.edu.yamamh.riyadhgo.MainActivity;
 import sa.edu.yamamh.riyadhgo.R;
 import sa.edu.yamamh.riyadhgo.UIUtils;
 import sa.edu.yamamh.riyadhgo.network.BaseApiClient;
@@ -101,7 +102,7 @@ public class LoginFragment extends Fragment implements DataArrivedListener {
          this.getActivity().runOnUiThread(new Runnable() {
              @Override
              public void run() {
-
+                 MainActivity.currentUser = emailText.getText().toString();
                  gotoStart();
              }
          });
@@ -112,7 +113,7 @@ public class LoginFragment extends Fragment implements DataArrivedListener {
             @Override
             public void run() {
 
-                UIUtils.showAlertDialog(LoginFragment.this.getActivity(),getResources().getString(R.string.error),error);
+                UIUtils.showAlertDialog(LoginFragment.this.getActivity(),getResources().getString(R.string.error),error, null);
             }
         });
     }

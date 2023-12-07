@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import sa.edu.yamamh.riyadhgo.PricingUtils;
 import sa.edu.yamamh.riyadhgo.R;
 import sa.edu.yamamh.riyadhgo.TransportMethodSelectedListener;
 import sa.edu.yamamh.riyadhgo.data.TransportMethodModel;
@@ -47,13 +48,13 @@ public class TransportMethodRVAdapter extends RecyclerView.Adapter<TransportMeth
         holder.getMethodTypeTV().setOnClickListener(view -> listener.methodSelected(model));
         holder.getMethodNameTV().setOnClickListener(view -> listener.methodSelected(model));
         holder.getMethodPriceTV().setOnClickListener(view -> listener.methodSelected(model));
-        switch (model.getMethodType())
-        {
+        switch (model.getMethodType()) {
             case BUS:
                 holder.getIconView().setImageResource(R.drawable.bus);
                 break;
             case CAR:
                 holder.getIconView().setImageResource(R.drawable.car);
+                holder.getMethodPriceTV().setText(String.format("%.2f", PricingUtils.getEstimatedPriceForPickupDest()));
                 break;
             case SCOOTER:
                 holder.getIconView().setImageResource(R.drawable.scooter);

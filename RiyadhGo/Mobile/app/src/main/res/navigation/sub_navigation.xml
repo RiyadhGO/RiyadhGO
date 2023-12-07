@@ -9,7 +9,7 @@
         android:id="@+id/pickupDestSelectionFragment"
         android:name="sa.edu.yamamh.riyadhgo.ui.PickupDestSelectionFragment"
         android:label="fragment_pickup_dest_selection"
-        tools:layout="@layout/fragment_pickup_dest_selection" >
+        tools:layout="@layout/fragment_pickup_dest_selection">
         <action
             android:id="@+id/action_pickupDestSelectionFragment_to_chooseTransportMethodFragment"
             app:destination="@id/chooseTransportMethodFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/chooseTransportMethodFragment"
         android:name="sa.edu.yamamh.riyadhgo.ui.ChooseTransportMethodFragment"
         android:label="fragment_choose_transport_method"
-        tools:layout="@layout/fragment_choose_transport_method" >
+        tools:layout="@layout/fragment_choose_transport_method">
         <action
             android:id="@+id/action_chooseTransportMethodFragment_to_pickupDestSelectionFragment"
             app:destination="@id/pickupDestSelectionFragment" />
@@ -38,7 +38,7 @@
     <fragment
         android:id="@+id/busMethodFragment"
         android:name="sa.edu.yamamh.riyadhgo.ui.BusMethodFragment"
-        android:label="BusMethodFragment" >
+        android:label="BusMethodFragment">
         <action
             android:id="@+id/action_busMethodFragment_to_chooseTransportMethodFragment"
             app:destination="@id/chooseTransportMethodFragment" />
@@ -59,7 +59,7 @@
         android:id="@+id/carMethodFragment"
         android:name="sa.edu.yamamh.riyadhgo.ui.CarMethodFragment"
         android:label="fragment_car_method"
-        tools:layout="@layout/fragment_car_method" >
+        tools:layout="@layout/fragment_car_method">
         <action
             android:id="@+id/action_carMethodFragment_to_chooseTransportMethodFragment"
             app:destination="@id/chooseTransportMethodFragment" />
@@ -76,7 +76,7 @@
     <fragment
         android:id="@+id/walkingMethodFragment"
         android:name="sa.edu.yamamh.riyadhgo.ui.WalkingMethodFragment"
-        android:label="WalkingMethodFragment" >
+        android:label="WalkingMethodFragment">
         <action
             android:id="@+id/action_walkingMethodFragment_to_chooseTransportMethodFragment"
             app:destination="@id/chooseTransportMethodFragment" />
@@ -99,7 +99,7 @@
     <fragment
         android:id="@+id/scooterMethodFragment"
         android:name="sa.edu.yamamh.riyadhgo.ui.ScooterMethodFragment"
-        android:label="ScooterMethodFragment" >
+        android:label="ScooterMethodFragment">
         <action
             android:id="@+id/action_scooterMethodFragment_to_chooseTransportMethodFragment"
             app:destination="@id/chooseTransportMethodFragment" />
@@ -120,36 +120,46 @@
             app:destination="@id/scooterTripFragment" />
     </fragment>
     <fragment
+        android:id="@+id/endTripFragment"
+        android:name="sa.edu.yamamh.riyadhgo.ui.EndTripFragment"
+        android:label="@string/trip_end"
+        tools:layout="@layout/fragment_end_trip" >
+        <action
+            android:id="@+id/action_endTripFragment_to_pickupDestSelectionFragment"
+            app:destination="@id/pickupDestSelectionFragment"
+            ></action>
+    </fragment>
+    <fragment
+        android:id="@+id/scooterTripFragment"
+        android:name="sa.edu.yamamh.riyadhgo.ui.ScooterTripFragment"
+        android:label="fragment_scooter_trip"
+        tools:layout="@layout/fragment_scooter_trip">
+        <action
+            android:id="@+id/action_scooterTripFragment_to_endTripFragment"
+            app:destination="@id/endTripFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/walkingTripFragment"
         android:name="sa.edu.yamamh.riyadhgo.ui.WalkingTripFragment"
         android:label="fragment_walking_trip"
-        tools:layout="@layout/fragment_walking_trip" >
+        tools:layout="@layout/fragment_walking_trip">
         <action
             android:id="@+id/action_walkingTripFragment_to_endTripFragment"
             app:destination="@id/endTripFragment" />
         <action
             android:id="@+id/action_walkingTripFragment_to_scooterTripFragment"
             app:destination="@id/scooterTripFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/endTripFragment"
-        android:name="sa.edu.yamamh.riyadhgo.ui.EndTripFragment"
-        android:label="fragment_end_trip"
-        tools:layout="@layout/fragment_end_trip" />
-    <fragment
-        android:id="@+id/scooterTripFragment"
-        android:name="sa.edu.yamamh.riyadhgo.ui.ScooterTripFragment"
-        android:label="fragment_scooter_trip"
-        tools:layout="@layout/fragment_scooter_trip" >
         <action
-            android:id="@+id/action_scooterTripFragment_to_endTripFragment"
-            app:destination="@id/endTripFragment" />
+            android:id="@+id/action_walkingTripFragment_to_busTripFragment"
+            app:destination="@id/busTripFragment" />
     </fragment>
+
+
     <fragment
         android:id="@+id/busTripFragment"
         android:name="sa.edu.yamamh.riyadhgo.ui.BusTripFragment"
         android:label="fragment_bus_trip"
-        tools:layout="@layout/fragment_bus_trip" >
+        tools:layout="@layout/fragment_bus_trip">
         <action
             android:id="@+id/action_busTripFragment_to_endTripFragment"
             app:destination="@id/endTripFragment" />

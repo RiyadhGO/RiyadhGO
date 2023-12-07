@@ -24,6 +24,13 @@ import sa.edu.yamamh.riyadhgo.data.TransportMethodModel;
 public class LocationClient  extends BaseApiClient {
 
     public static void findLocation(String methodType, DataArrivedListener listener, int requestCode) {
+        /*
+        Retrieves locations based on the provided methodType.
+Uses an HTTP GET request to ApiConstants.LOCATIONS_FIND_URI with the method type in the path.
+Requires a valid CURRENT_TOKEN for authorization.
+Parses the response JSON and returns a list of LocationModel objects.
+Notifies the DataArrivedListener with the retrieved locations or an error message
+         */
         EXECUTOR.execute(new Runnable() {
             @Override
             public void run() {
@@ -53,6 +60,14 @@ public class LocationClient  extends BaseApiClient {
     }
     public static void addToFavorites(LocationModel place, DataArrivedListener listener, int requestCode) {
         EXECUTOR.execute(new Runnable() {
+            /*
+            Adds a location to the user's favorites.
+Uses an HTTP POST request to ApiConstants.FAV_LOCATIONS_ADD_URI.
+Sends the place information as a JSON object in the request body.
+Requires a valid CURRENT_TOKEN for authorization.
+Parses the response JSON and returns the updated LocationModel object.
+Notifies the DataArrivedListener with the updated location or an error message
+             */
             @Override
             public void run() {
                 try {
@@ -87,6 +102,13 @@ public class LocationClient  extends BaseApiClient {
     public static void getMyFavoriteLocations(DataArrivedListener listener, int requestCode) {
         EXECUTOR.execute(new Runnable() {
             @Override
+            /*
+            Retrieves all of the user's favorite locations.
+Uses an HTTP GET request to ApiConstants.FAV_LOCATIONS_ME_URI.
+Requires a valid CURRENT_TOKEN for authorization.
+Parses the response JSON and returns a list of LocationModel objects.
+Notifies the DataArrivedListener with the retrieved locations or an error message
+             */
             public void run() {
                 try {
                     HttpGet getMethod = new HttpGet(ApiConstants.FAV_LOCATIONS_ME_URI);

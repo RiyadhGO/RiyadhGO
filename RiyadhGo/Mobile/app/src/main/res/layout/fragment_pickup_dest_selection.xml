@@ -25,30 +25,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/where_to_go_lbl"
         ></ImageView>
+
     <Button
         android:id="@+id/choose_pickup_btn"
-        android:layout_marginTop="5dp"
+        android:layout_width="188dp"
+        android:layout_height="51dp"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="5dp"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:text="@string/choose_pickup_point"
+        android:layout_marginTop="5dp"
         android:backgroundTint="@color/white"
-        android:textColor="@color/selver"
+        android:padding="5dp"
+        android:text="@string/choose_pickup_point"
         android:textAlignment="textStart"
-        app:layout_constraintTop_toBottomOf="@id/where_to_go_lbl"
+        android:textColor="@color/selver"
         app:layout_constraintStart_toEndOf="@id/select_pickup_imgvw"
 
-        android:padding="5dp"
-        >
+        app:layout_constraintTop_toBottomOf="@id/where_to_go_lbl">
 
 
     </Button>
     <ImageView
         android:id="@+id/fav_pickup_btn"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="0dp"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/heart"
@@ -75,20 +74,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/select_pickup_imgvw"
         ></ImageView>
+
     <Button
         android:id="@+id/choose_dest_btn"
+        android:layout_width="186dp"
+        android:layout_height="47dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_width="0dp"
-        android:padding="5dp"
-        android:layout_height="50dp"
-        android:text="@string/your_dest"
         android:backgroundTint="@color/white"
-        android:textColor="@color/selver"
+        android:padding="5dp"
+        android:text="@string/your_dest"
         android:textAlignment="textStart"
-        app:layout_constraintTop_toBottomOf="@id/choose_pickup_btn"
+        android:textColor="@color/selver"
         app:layout_constraintStart_toEndOf="@id/select_dest_imgvw"
+        app:layout_constraintTop_toBottomOf="@id/choose_pickup_btn"
 
         >
 
@@ -96,8 +95,8 @@
     <ImageView
         android:id="@+id/fav_dest_btn"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="0dp"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:backgroundTint="@color/purple_500"
@@ -113,7 +112,7 @@
         android:id="@+id/fgmt_pickup_dest_home_btn"
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="0dp"
         android:layout_width="0dp"
         android:padding="5dp"
         android:layout_height="50dp"

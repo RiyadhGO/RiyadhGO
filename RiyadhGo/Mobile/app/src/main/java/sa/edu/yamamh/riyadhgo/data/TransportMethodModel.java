@@ -7,14 +7,14 @@ import java.util.Map;
 
 import sa.edu.yamamh.riyadhgo.MappingUtils;
 
-public class TransportMethodModel {
-    private Long id;
-    private String name;
-    private float costPerUnit;
-    private MeasureUnit measureUnit;
-    private boolean carbonEmitted;
-    private String link;
-    private TransportMethodTypes methodType;
+public class TransportMethodModel {//This class represents a model for describing transportation methods within a trip
+    private Long id;//Unique identifier for the transportation method
+    private String name;// Name of the transportation method (e.g., Uber, Bus).
+    private float costPerUnit;//Cost per unit of measure for the transport method (e.g., price per kilometer, per ride)
+    private MeasureUnit measureUnit;//Unit of measure used for the cost per unit (e.g., Meter, Kilometer)
+    private boolean carbonEmitted;//Boolean indicating whether the method emits carbon dioxide
+    private String link;//Optional link to a website or booking platform related to the method
+    private TransportMethodTypes methodType;//Enumerated value representing the type of transportation (e.g., Car, Bus, Scooter, Walking)
 
     public Long getId() {
         return id;

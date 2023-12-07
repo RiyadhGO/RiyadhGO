@@ -27,12 +27,13 @@ import sa.edu.yamamh.riyadhgo.data.LoginModel;
 import sa.edu.yamamh.riyadhgo.data.RouteModel;
 import sa.edu.yamamh.riyadhgo.data.UserModel;
 
+//This class serves as a base for interacting with a backend API using HTTP requests and responses
 public class BaseApiClient {
 
-    public static Executor EXECUTOR = Executors.newSingleThreadExecutor();
-    public static HttpClient HTTP_CLIENT = HttpClients.createDefault();
-    public static String CURRENT_TOKEN = "";
-    public static boolean IS_LOGGED_IN = false;
+    public static Executor EXECUTOR = Executors.newSingleThreadExecutor();//Uses a single-threaded executor for handling asynchronous tasks
+    public static HttpClient HTTP_CLIENT = HttpClients.createDefault();//Provides a default instance of HttpClient for sending HTTP requests
+    public static String CURRENT_TOKEN = "";//Stores the current user's authentication token
+    public static boolean IS_LOGGED_IN = false;//indicates whether a user is currently logged in
 
 
     /**
@@ -41,6 +42,9 @@ public class BaseApiClient {
      * @return
      */
     public static void doLogin(LoginModel model, DataArrivedListener listener, int requestCode) {
+        //Attempts to login a user with the provided LoginModel information
+        //Sends a POST request to the ApiConstants.LOGIN_URI with the user's credentials
+        //Notifies the DataArrivedListener with the token or an error message depending on the response code
 
         EXECUTOR.execute(new Runnable() {
             @Override
@@ -79,8 +83,6 @@ public class BaseApiClient {
                 }
             }
         });
-
-
     }
 
     public static void doRegister(UserModel model, DataArrivedListener listener, int requestCode){
@@ -106,14 +108,12 @@ public class BaseApiClient {
                 }
             }});
     }
-
     public static JSONObject responseEntityToJsonObject(HttpEntity entity) {
         try {
             if (entity != null) {
                 String retSrc = EntityUtils.toString(entity);
                 Log.i("BaseAPIClientJSONObject",retSrc);
                 JSONObject result = new JSONObject(retSrc); //Convert String to JSON Object
-
                 return result;
             }
         } catch (Exception ex) {

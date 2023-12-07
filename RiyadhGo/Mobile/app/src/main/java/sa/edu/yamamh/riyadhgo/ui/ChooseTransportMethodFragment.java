@@ -120,7 +120,7 @@ public class ChooseTransportMethodFragment extends Fragment implements DataArriv
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                UIUtils.showAlertDialog(getActivity(),"Error",error);
+                UIUtils.showAlertDialog(getActivity(),"Error",error, null);
             }
         });
     }

@@ -10,7 +10,14 @@ import java.util.Map;
 
 import sa.edu.yamamh.riyadhgo.data.MeasureUnit;
 import sa.edu.yamamh.riyadhgo.data.TransportMethodTypes;
+/*
+-->Offers methods for retrieving values of different data types (float, long, int, double, string, boolean, map, LocalDateTime, MeasureUnit, TransportMethodTypes) from maps and JSON objects.
+-->Handles null values and provides default values for each data type.
+-->Catches and logs exceptions to ensure error handling.
+-->Uses a predefined DATE_TIME_FORMATTER for consistent date and time parsing.
+ */
 
+//This class provides various utility methods for extracting and converting data types from maps and JSON objects
 public class MappingUtils {
 
     public static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

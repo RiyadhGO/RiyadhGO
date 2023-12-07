@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.EndTripFragment">
+    tools:context=".ui.EndTripFragment"
+    android:background="@color/white">
     <ImageView
         android:id="@+id/end_trip_fgmt_person_imgvw"
         android:layout_width="50dp"
@@ -15,6 +16,7 @@
         >
     </ImageView>
     <TextView
+        android:id="@+id/end_trip_fgmt_person_lbl"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         app:layout_constraintStart_toEndOf="@id/end_trip_fgmt_person_imgvw"
@@ -131,7 +133,7 @@
         android:padding="10dp"
         android:textSize="16sp"
         android:textColor="@color/black"
-        android:text="@string/calories_burned"
+        android:text="@string/carbon_emitted"
         ></TextView>
     <TextView
         android:id="@+id/end_trip_fgmt_car_txt"
@@ -145,11 +147,36 @@
         android:textColor="@color/black"
         android:text="@string/car_50"
         ></TextView>
-
-    <Button
+    <TextView
+        android:id="@+id/end_trip_fgmt_svcar_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_car_txt"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_car_lbl"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:text="@string/carbon_saved"
+        ></TextView>
+    <TextView
+        android:id="@+id/end_trip_fgmt_svcar_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_car_lbl"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:text="@string/car_50"
+        ></TextView>
+
+    <Button
+        android:id="@+id/end_trip_fgmt_contBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/end_trip_fgmt_svcar_txt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"

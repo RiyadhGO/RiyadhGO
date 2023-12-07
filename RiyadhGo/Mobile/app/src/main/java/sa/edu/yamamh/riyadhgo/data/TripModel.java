@@ -2,33 +2,36 @@ package sa.edu.yamamh.riyadhgo.data;
 
 import android.util.Log;
 
-import com.google.maps.model.LatLng;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONObject;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import sa.edu.yamamh.riyadhgo.DistanceUtils;
 import sa.edu.yamamh.riyadhgo.MappingUtils;
 
 public class TripModel {
-    private Long id;
-    private Long userId;
-    private UserModel user;
-    private float startLat;
-    private float startLng;
-    private float destLat;
-    private float destLng;
-    private double duration;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
-    private Long transportMethodId;
-    private TransportMethodModel transportMethod;
+    private Long id;//Unique identifier for the trip
+    private Long userId;// ID of the user who took the trip
+    private UserModel user;//Reference to the UserModel object associated with the user
+    private double startLat;//Latitude coordinate of the trip's starting point
+    private double startLng;//Longitude coordinate of the trip's starting point
+    private double destLat;//Latitude coordinate of the trip's destination
+    private double destLng;//Longitude coordinate of the trip's destination
+    private double duration;//Total duration of the trip in minutes
+    private LocalDateTime startTime;//Timestamp indicating the start time of the trip
+    private LocalDateTime endTime;//Timestamp indicating the end time of the trip
+    private Long transportMethodId;//ID of the transportation method used for the trip
+    private TransportMethodModel transportMethod;//Reference to the TransportMethodModel object representing the transportation method
 
-    private List<RouteModel> route;
+    private List<RouteModel> route;// List of RouteModel objects representing the route taken during the trip
 
     public Long getId() {
         return id;
@@ -54,35 +57,36 @@ public class TripModel {
         this.user = user;
     }
 
-    public float getStartLat() {
+    //sets the user associated with the trip
+    public double getStartLat() {
         return startLat;
     }
 
-    public void setStartLat(float startLat) {
+    public void setStartLat(double startLat) {
         this.startLat = startLat;
     }
 
-    public float getStartLng() {
+    public double getStartLng() {
         return startLng;
     }
 
-    public void setStartLng(float startLng) {
+    public void setStartLng(double startLng) {
         this.startLng = startLng;
     }
 
-    public float getDestLat() {
+    public double getDestLat() {
         return destLat;
     }
 
-    public void setDestLat(float destLat) {
+    public void setDestLat(double destLat) {
         this.destLat = destLat;
     }
 
-    public float getDestLng() {
+    public double getDestLng() {
         return destLng;
     }
 
-    public void setDestLng(float destLng) {
+    public void setDestLng(double destLng) {
         this.destLng = destLng;
     }
 
@@ -154,14 +158,14 @@ public class TripModel {
             return trip;
         trip.setId(MappingUtils.getLong("id", data));
         trip.setUserId(MappingUtils.getLong("userId", data));
-        trip.setStartLat(MappingUtils.getFloat("startLat", data));
-        trip.setStartLng(MappingUtils.getFloat("startLng", data));
-        trip.setDuration(MappingUtils.getLong("duration", data));
+        trip.setStartLat(MappingUtils.getDouble("startLat", data));
+        trip.setStartLng(MappingUtils.getDouble("startLng", data));
+        trip.setDuration(MappingUtils.getDouble("duration", data));
         trip.setStartTime(MappingUtils.getLocalDateTime("startTime",data));
         trip.setEndTime(MappingUtils.getLocalDateTime("endTime",data));
         trip.setTransportMethodId(MappingUtils.getLong("transportMethodId", data));
-        trip.setDestLat(MappingUtils.getFloat("destLat",data));
-        trip.setDestLng(MappingUtils.getFloat("destLng",data));
+        trip.setDestLat(MappingUtils.getDouble("destLat",data));
+        trip.setDestLng(MappingUtils.getDouble("destLng",data));
         return trip;
     }
 
@@ -171,23 +175,23 @@ public class TripModel {
             return trip;
         trip.setId(MappingUtils.getLong("id", data));
         trip.setUserId(MappingUtils.getLong("userId", data));
-        trip.setStartLat(MappingUtils.getFloat("startLat", data));
-        trip.setStartLng(MappingUtils.getFloat("startLng", data));
+        trip.setStartLat(MappingUtils.getDouble("startLat", data));
+        trip.setStartLng(MappingUtils.getDouble("startLng", data));
         trip.setDuration(MappingUtils.getLong("duration", data));
         trip.setStartTime(MappingUtils.getLocalDateTime("startTime",data));
         trip.setEndTime(MappingUtils.getLocalDateTime("endTime",data));
         trip.setTransportMethodId(MappingUtils.getLong("transportMethodId", data));
-        trip.setDestLat(MappingUtils.getFloat("destLat",data));
-        trip.setDestLng(MappingUtils.getFloat("destLng",data));
+        trip.setDestLat(MappingUtils.getDouble("destLat",data));
+        trip.setDestLng(MappingUtils.getDouble("destLng",data));
         return trip;
     }
 
 
     public void addRoute(LatLng location){
-        this.addRoute((float)location.lat,(float)location.lng);
+        this.addRoute(location.latitude,location.longitude);
     }
-
-    public void addRoute(float lat, float lng){
+    //Adds a route point to the trip based on a LatLng object
+    public void addRoute(double lat, double lng){//Adds a route point to the trip based on latitude and longitude values
         if(this.route == null){
             this.route = new ArrayList<>();
         }
@@ -198,6 +202,20 @@ public class TripModel {
         model.setTrip(this);
         model.setTripId(this.id);
         this.route.add(model);
+    }
+
+    public double getDistanceInKM()//Calculates the total distance of the trip in kilometers
+    {
+        LatLng start = new LatLng(this.getStartLat(), this.getStartLng());
+        LatLng end = new LatLng(this.getDestLat(), this.getDestLng());
+        double distanceKM = DistanceUtils.getDistanceInKM(start,end);
+        return distanceKM;
+    }
+
+    public long getDurationInMinutes()//Calculates the total duration of the trip in minutes
+    {
+
+        return ChronoUnit.MINUTES.between(this.startTime, this.endTime);
     }
 
 }

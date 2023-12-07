@@ -3,6 +3,15 @@ package sa.edu.yamamh.riyadhgo;
 import java.time.LocalTime;
 import java.util.concurrent.TimeUnit;
 
+import sa.edu.yamamh.riyadhgo.data.TransportMethodTypes;
+import sa.edu.yamamh.riyadhgo.ui.StartFragment;
+/*
+-->Defines constants for base fare, price per kilometer, price per minute, and minimum fare for each region (Riyadh, Eastern, Western, Northern).
+-->Implements a getEstimatedPrice method that calculates the estimated price based on the provided region, distance in kilometers, and time in minutes.
+-->Applies a minimum fare based on the region if the calculated price is lower.
+ */
+
+//This class provides methods for estimating the price of a trip based on various factors
 public class PricingUtils {
 
     private static final double BASE_FARE = 4;
@@ -23,7 +32,7 @@ public class PricingUtils {
     private static final double WESTERN_MINIMUM_FARE = 8.5;
     private static final double NORTHERN_MINIMUM_FARE = 8.5;
 
-    public double getEstimatedPrice(KSARegions region, double distanceInKM, double timeInMinutes){
+    public  static double getEstimatedPrice(KSARegions region, double distanceInKM, double timeInMinutes){
         double price = 0;
         switch (region){
             case RIYADH:
@@ -41,6 +50,16 @@ public class PricingUtils {
             default:
                 return price;
         }
+    }
+
+    public static double getEstimatedPriceForPickupDest(){
+        double dist = DistanceUtils.getDistanceInKM(StartFragment
+                .pickLocation.getLatLng(), StartFragment.destLocation.getLatLng());
+        KSARegions reg = KSARegions.IsInRegion(StartFragment.destLocation.getLongitude(),StartFragment.destLocation.getLatitude());
+
+        double time = DistanceUtils.getEstimatedTimeInMinutes(dist, TransportMethodTypes.CAR);
+        double price = getEstimatedPrice(KSARegions.RIYADH, dist, time);
+        return price;
     }
 
 

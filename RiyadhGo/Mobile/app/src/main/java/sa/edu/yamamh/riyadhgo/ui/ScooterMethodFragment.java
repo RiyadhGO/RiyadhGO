@@ -91,7 +91,7 @@ public class ScooterMethodFragment extends Fragment implements DataArrivedListen
                 new Runnable() {
                     @Override
                     public void run() {
-                        UIUtils.showAlertDialog(getActivity(),"Error:", error);
+                        UIUtils.showAlertDialog(getActivity(),"Error:", error, null);
                     }
                 }
         );
@@ -130,6 +130,8 @@ public class ScooterMethodFragment extends Fragment implements DataArrivedListen
         selectedLocation = model;
         WalkingTripFragment.originalMethod = TransportMethodTypes.SCOOTER;
         WalkingTripFragment.targetLocation = model;
+        WalkingTripFragment.firstTarget = true;
+        WalkingTripFragment.reached = false;
         navigateToSubAction(R.id.action_scooterMethodFragment_to_walkingTripFragment);
     }
 }

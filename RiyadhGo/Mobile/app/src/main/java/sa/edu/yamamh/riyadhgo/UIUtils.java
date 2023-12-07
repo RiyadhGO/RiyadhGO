@@ -42,13 +42,13 @@ public class UIUtils {
 
     }
 
-    public static void showAlertDialog(Context context, String title, String message)
+    public static void showAlertDialog(Context context, String title, String message, DialogInterface.OnClickListener listener)
     {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title);
         builder.setMessage(message);
-        builder.setPositiveButton("OK",null);
+        builder.setPositiveButton("OK",listener);
         builder.show();
     }
 }

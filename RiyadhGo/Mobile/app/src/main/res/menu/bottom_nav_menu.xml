@@ -3,21 +3,21 @@
 
     <item
         android:id="@+id/navigation_bus"
-        android:icon="@drawable/bus"
+        android:icon="@drawable/bus2"
         android:title="@string/bus" />
 
     <item
         android:id="@+id/navigation_car"
-        android:icon="@drawable/car"
+        android:icon="@drawable/car2"
         android:title="@string/car" />
 
     <item
         android:id="@+id/navigation_scooter"
-        android:icon="@drawable/scooter"
+        android:icon="@drawable/scooter2"
         android:title="@string/scooter" />
     <item
         android:id="@+id/navigation_walking"
-        android:icon="@drawable/walk"
+        android:icon="@drawable/walk2"
         android:title="@string/walking" />
 
 </menu>

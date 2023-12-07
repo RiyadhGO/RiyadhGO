@@ -268,7 +268,7 @@ public class PickupDestSelectionFragment extends Fragment
         this.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                UIUtils.showAlertDialog(getActivity(), getResources().getString(R.string.error), error);
+                UIUtils.showAlertDialog(getActivity(), getResources().getString(R.string.error), error,null);
             }
         });
     }

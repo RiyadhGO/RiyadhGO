@@ -1,6 +1,7 @@
 package sa.edu.yamamh.riyadhgo.ui;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -82,14 +83,30 @@ public class CarMethodFragment extends Fragment implements DataArrivedListener, 
     private void setBookBtnClickListener()
     {
         this.bookBtn.setOnClickListener( view -> {
-           //open uber application.
+            //open uber application.
             //Uri location = Uri.parse("geo:0,0?q=1600+Amphitheatre+Parkway,+Mountain+View,+California");
 // Or map point based on latitude/longitude
- Uri location = Uri.parse("geo:"
+ /*Uri location = Uri.parse("geo:"
          + StartFragment.pickLocation.getLatitude() + ","
          + StartFragment.pickLocation.getLongitude() + "?z=14"); // z param is zoom level
             Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
             startActivity(mapIntent);
+        });*/
+
+            PackageManager pm = getActivity().getPackageManager();
+            try {
+                pm.getPackageInfo("com.ubercab", PackageManager.GET_ACTIVITIES);
+                String uri = "uber://?action=setPickup&pickup=my_location";
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(uri));
+                startActivity(intent);
+            } catch (PackageManager.NameNotFoundException e) {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.ubercab")));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=com.ubercab")));
+                }
+            }
         });
     }
     private void initDataRV(){
@@ -126,7 +143,7 @@ public class CarMethodFragment extends Fragment implements DataArrivedListener, 
                 new Runnable() {
                     @Override
                     public void run() {
-                        UIUtils.showAlertDialog(getActivity(),"Error:", error);
+                        UIUtils.showAlertDialog(getActivity(),"Error:", error, null);
                     }
                 }
         );

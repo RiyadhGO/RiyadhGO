@@ -7,11 +7,12 @@ import java.util.Map;
 
 import sa.edu.yamamh.riyadhgo.MappingUtils;
 
-public class SelectTransportMethodModel {
-    private String methodType;
-    private String names;
-    private  float minPrice;
-    private float maxPrice;
+public class SelectTransportMethodModel {//This class represents a model for selecting a transportation method.
+    // It likely serves as a data structure for filtering and choosing transportation options within a trip
+    private String methodType;//e.g., Car, Bus, Scooter, Walking
+    private String names;//e.g., Uber, Careem, Riyadh Bus
+    private  float minPrice;//Minimum acceptable price for the transportation method
+    private float maxPrice;//Maximum acceptable price for the transportation method
 
     public String getMethodType() {
         return methodType;

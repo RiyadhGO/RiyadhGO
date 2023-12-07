@@ -9,15 +9,16 @@ import sa.edu.yamamh.riyadhgo.MappingUtils;
 
 public class UserModel {
 
-    private Long userId;
-    private String email;
-    private String password;
-    private String name;
-    private String phone;
+    private Long userId;//Unique identifier for the user
+    private String email;//Email address of the user
+    private String password;//Password associated with the user account
+    private String name;//name of the user
+    private String phone;//Phone number of the user
 
     public UserModel() {
     }
 
+    //Getters and Setters
     public UserModel(String email, String password, String name, String phone) {
         this.email = email;
         this.password = password;

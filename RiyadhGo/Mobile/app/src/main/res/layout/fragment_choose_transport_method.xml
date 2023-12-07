@@ -12,7 +12,7 @@
         android:id="@+id/btnTransMethod_hide_show"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/view_methods"
+        android:text="@string/transport_methods"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></Button>
     <TextView

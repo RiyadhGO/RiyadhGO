@@ -91,7 +91,7 @@ public class WalkingMethodFragment extends Fragment  implements DataArrivedListe
                 new Runnable() {
                     @Override
                     public void run() {
-                        UIUtils.showAlertDialog(getActivity(),"Error:", error);
+                        UIUtils.showAlertDialog(getActivity(),"Error:", error,null);
                     }
                 }
         );
@@ -102,6 +102,7 @@ public class WalkingMethodFragment extends Fragment  implements DataArrivedListe
         WalkingTripFragment.originalMethod = TransportMethodTypes.WALK;
         WalkingTripFragment.targetLocation = StartFragment.destLocation;
         WalkingTripFragment.firstTarget = false;
+        WalkingTripFragment.reached=false;
         navigateToSubAction(R.id.action_walkingMethodFragment_to_walkingTripFragment);
 
     }

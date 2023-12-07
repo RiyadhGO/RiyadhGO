@@ -15,11 +15,20 @@ import sa.edu.yamamh.riyadhgo.data.RouteModel;
 /**
  * The trip client is used to send the trip data to the server
  */
-public class TripClient extends BaseApiClient {
+public class TripClient extends BaseApiClient {//This class extends the BaseApiClient and provides
+    // methods specifically for interacting with trip data on the backend API
 
     public static void doMove(RouteModel route, DataArrivedListener listener,int requestCode) {
         route.setTime(LocalDateTime.now());
         try {
+            /*
+            Saves a new route point (user's movement) on the server.
+- Uses an HTTP POST request to ApiConstants.ROUTES_URI.
+- Sets the current timestamp on the provided route model.
+- Sends the route information as a JSON object in the request body.
+- Requires a valid CURRENT_TOKEN for authorization.
+- Notifies the DataArrivedListener with a success message or an error message depending on the response code
+             */
             JSONObject info = new JSONObject(route.toMap());
             StringEntity requestEntity = new StringEntity(
                     info.toString(),

@@ -83,7 +83,7 @@ public class RegisterFragment extends Fragment implements DataArrivedListener {
         this.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                UIUtils.showAlertDialog(getActivity(), "Success!!!", "Registration Success");
+                UIUtils.showAlertDialog(getActivity(), "Success!!!", "Registration Success", null);
             }
         });
     }
@@ -92,7 +92,7 @@ public class RegisterFragment extends Fragment implements DataArrivedListener {
         this.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                UIUtils.showAlertDialog(getActivity(), getResources().getString(R.string.error), error);
+                UIUtils.showAlertDialog(getActivity(), getResources().getString(R.string.error), error, null);
             }
         });
     }

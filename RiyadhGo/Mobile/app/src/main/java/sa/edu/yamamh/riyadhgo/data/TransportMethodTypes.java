@@ -1,8 +1,8 @@
 package sa.edu.yamamh.riyadhgo.data;
 
 public enum TransportMethodTypes {
-    WALK,
-    SCOOTER,
-    CAR,
-    BUS
+    WALK, // 0
+    SCOOTER, // 1
+    CAR, // 2
+    BUS // 3
 }

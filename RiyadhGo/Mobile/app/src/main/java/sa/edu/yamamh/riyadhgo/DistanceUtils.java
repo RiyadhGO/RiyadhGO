@@ -1,41 +1,58 @@
 package sa.edu.yamamh.riyadhgo;
 
 
+import android.location.Location;
+
 import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.SphericalUtil;
 
 import sa.edu.yamamh.riyadhgo.data.TransportMethodTypes;
 
 public class DistanceUtils {
 
-    private static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
-        double R = 6371e3; // metres
-        double φ1 = Math.toRadians(lat1);
-        double φ2 = Math.toRadians(lat2);
-        double Δφ = Math.toRadians(lat2 - lat1);
-        double Δλ = Math.toRadians(lon2 - lon1);
 
-        double a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2)
-                + Math.cos(φ1) * Math.cos(φ2)
-                        * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-        return R * c;
+
+    private static double distance(double lat1, double lon1, double lat2, double lon2, char unit) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515; //distance in miles.
+        if (unit == 'K') {
+            dist = dist * 1.609344; //distance multiplied by kilometers per mile.
+        } else if (unit == 'N') {
+            dist = dist * 0.8684;
+        }
+        return (dist);
     }
 
+    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+    /*::  This function converts decimal degrees to radians             :*/
+    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+    private static double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
 
-
-    private static double calculateDistanceInKiloMeters(double lat1, double lon1, double lat2, double lon2) {
-        return calculateDistance(lat1, lon1, lat2, lon2) / 1000;
+    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+    /*::  This function converts radians to decimal degrees             :*/
+    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+    private static double rad2deg(double rad) {
+        return (rad * 180.0 / Math.PI);
     }
     public static double getDistanceInKM(LatLng loc1, LatLng loc2)
     {
-        return calculateDistanceInKiloMeters(loc1.latitude,loc1.longitude,loc2.latitude,loc2.longitude) ;
+        //float[] results = new float[2];
+        //Location.distanceBetween(loc1.latitude, loc1.longitude, loc2.latitude, loc2.longitude, results);
+        //return distance(loc1.latitude,loc1.longitude,loc2.latitude,loc2.longitude,'K');
+        return SphericalUtil.computeDistanceBetween(loc1, loc2) / 1000.0;
+        //return results[0] / 1000;
     }
 
     public static double getEstimatedTimeInMinutes(double distanceInKM, TransportMethodTypes methodType){
         switch (methodType){
             case WALK:
-                return distanceInKM * 15;
+                return distanceInKM * 10;
             case SCOOTER:
                 return distanceInKM * 5;
             case BUS:
@@ -46,13 +63,6 @@ public class DistanceUtils {
         return distanceInKM * 2.30;
     }
 
-    //calculate average carbon emitted per distance
-    public static double getCarbonEmittedInGrams(double distance, TransportMethodTypes methodType){
-        double carbonEmitted = 0.0;
-        if(methodType == TransportMethodTypes.BUS){
-            carbonEmitted = distance * 0.30;
-        }
-        return  carbonEmitted;
-    }
+
 
 }

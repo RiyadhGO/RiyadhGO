@@ -10,12 +10,13 @@ import java.util.Map;
 import sa.edu.yamamh.riyadhgo.MappingUtils;
 
 public class LocationModel {
+    //declare private fields: id, name, longitude, latitude
     private Long id;
     private String name;
     private float longitude;
     private float latitude;
 
-
+    // Getter and Setter methods for each field
     public Long getId() {
         return id;
     }
@@ -49,7 +50,7 @@ public class LocationModel {
     }
 
 
-
+    // toMap method converts the LocationModel object to a Map Object
     public Map<String,Object> toMap(){
         Map<String,Object> data = new HashMap<>();
         data.put("id", this.getId());
