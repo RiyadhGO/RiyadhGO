@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import sa.edu.yamamh.riyadhgo.PricingUtils;
 import sa.edu.yamamh.riyadhgo.R;
 import sa.edu.yamamh.riyadhgo.TransportMethodTypeSelectedListener;
 import sa.edu.yamamh.riyadhgo.data.SelectTransportMethodModel;
@@ -55,6 +56,7 @@ public class SelectTransportMethodsRVAdapter extends RecyclerView.Adapter<Select
                 break;
             case CAR:
                 holder.getIconView().setImageResource(R.drawable.car);
+                holder.getMethodPriceTV().setText(String.format("%.2f", PricingUtils.getEstimatedPriceForPickupDest()));
                 break;
             case SCOOTER:
                 holder.getIconView().setImageResource(R.drawable.scooter);

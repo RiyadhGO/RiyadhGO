@@ -85,7 +85,7 @@ public class WalkingTripFragment extends Fragment implements LocationChangedList
                     stopMoving();
                     goSosBtn.setText(getString(R.string.GO));
                     goSosBtn.setCompoundDrawables(null,null,null,null);
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + getString(R.string.sos_number)));
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "0561829394"));
                     startActivity(intent);
                 }
 
